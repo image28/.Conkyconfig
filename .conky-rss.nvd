@@ -1,0 +1,94 @@
+conky.config = {
+-- conky configuration
+-- edited by darcon@gmail.com
+-- edited by image28@slingshot.co.nz
+
+-- Use Xft?
+	use_xft = false,
+
+-- Xft font when Xft is enabled
+	--font = 'Terminus:size=14',
+
+-- Text alpha when using Xft
+	xftalpha = 0.8,
+
+-- Create own window instead of using desktop (required in nautilus)
+	own_window = true,
+	own_window_argb_visual = true,
+	own_window_transparent = true,
+	--own_window_argb_value = 82,
+	own_window_type = 'desktop',
+	own_window_class = 'override',
+
+-- Use double buffering (reduces flicker, may not work for everyone)
+	double_buffer = true,
+
+-- Draw shades?
+	draw_shades = true,
+
+-- Draw outlines?
+	draw_outline = false,
+
+-- Draw borders around text
+	draw_borders = false,
+
+-- Stippled borders?
+	stippled_borders = 8,
+
+-- border margins
+--	border_margin = '4',
+
+-- border width
+	border_width = 1,
+
+-- Default colors and also border colors
+	default_color = 'white',
+	default_shade_color = 'black',
+	default_outline_color = 'white',
+
+-- Subtract file system buffers from used memory?
+	no_buffers = true,
+
+-- set to yes if you want all text to be in uppercase
+	uppercase = true,
+
+-- Force UTF8? note that UTF8 support required XFT
+	override_utf8_locale = false,
+
+---------------------------------------------------------
+-- Unique per window bellow                            --
+---------------------------------------------------------
+-- Set Window Name
+	own_window_title = 'conky-rss.nvd',
+
+-- Update interval in seconds
+	update_interval = 60.0,
+
+-- Minimum size of text area
+	minimum_width = 350, minimum_height = 5,
+
+--Maximum Width of Window
+	maximum_width = 1150,
+
+-- Text alignment, other possible values are commented
+
+-- Set Window Name
+	own_window_title = 'conky-rss.nvd',
+
+alignment = 'bottom_left',
+--alignment = 'top_right',
+--alignment bottom_left
+--alignment bottom_right
+
+-- Gap between borders of screen and text
+	gap_x = 10,
+	gap_y = 55,
+	--${execi 3600 /home/image/.ConkyConfig/rss.sh "https://nvd.nist.gov/download/nvd-rss.xml" 1 10 "description>"}
+	--${rss https://nvd.nist.gov/download/nvd-rss.xml 10 item_descs 10}
+};
+
+conky.text = [[
+${color orange}National Vulnerability Database
+${hr 4}$color$font
+${execi 300 /home/image/.ConkyConfig/rss.sh "https://nvd.nist.gov/download/nvd-rss.xml" 1 20 "description>"}
+]];

@@ -1,0 +1,97 @@
+conky.config = {
+-- conky configuration
+-- edited by darcon@gmail.com
+-- edited by image28@slingshot.co.nz
+
+-- Use Xft?
+	use_xft = false,
+
+-- Xft font when Xft is enabled
+	font = 'Terminus:size=8',
+
+-- Text alpha when using Xft
+	xftalpha = 0.8,
+
+-- Create own window instead of using desktop (required in nautilus)
+	own_window = true,
+	own_window_argb_visual = true,
+	own_window_transparent = true,
+	--own_window_argb_value = 82,
+	own_window_type = 'desktop',
+	own_window_class = 'override',
+
+-- Use double buffering (reduces flicker, may not work for everyone)
+	double_buffer = true,
+
+-- Draw shades?
+	draw_shades = true,
+
+-- Draw outlines?
+	draw_outline = false,
+
+-- Draw borders around text
+	draw_borders = false,
+
+-- Stippled borders?
+	stippled_borders = 8,
+
+-- border margins
+--	border_margin = '4',
+
+-- border width
+	border_width = 1,
+
+-- Default colors and also border colors
+	default_color = 'white',
+	default_shade_color = 'black',
+	default_outline_color = 'white',
+
+-- Subtract file system buffers from used memory?
+	no_buffers = true,
+
+-- set to yes if you want all text to be in uppercase
+	uppercase = true,
+
+-- Force UTF8? note that UTF8 support required XFT
+	override_utf8_locale = false,
+
+---------------------------------------------------------
+-- Unique per window bellow                            --
+---------------------------------------------------------
+
+-- Set Window Name
+	own_window_title = 'conky-top',
+
+-- Update interval in seconds
+	update_interval = 0.8,
+
+-- Minimum size of text area
+	minimum_width = 500, minimum_height = 5,
+
+-- Text alignment, other possible values are commented
+	alignment = 'top_left',
+
+--alignment = 'middle_left'
+--alignment bottom_left
+--alignment bottom_right
+
+-- Gap between borders of screen and text
+	gap_x = 5,
+	gap_y = 410, 
+
+};
+
+conky.text = [[
+${color Tan2}${font spaceman:size=10}NAME${GOTO 265}PID${GOTO 350}CPU${GOTO 428}MEM${color}
+${color orange}${hr 4}${color}
+${top name 1}${GOTO 250}${top pid 1}${GOTO 330}${top cpu 1}${GOTO 410}${top mem 1}
+${top name 2}${GOTO 250}${top pid 2}${GOTO 330}${top cpu 2}${GOTO 410}${top mem 2}
+${top name 3}${GOTO 250}${top pid 3}${GOTO 330}${top cpu 3}${GOTO 410}${top mem 3}
+${top name 4}${GOTO 250}${top pid 4}${GOTO 330}${top cpu 4}${GOTO 410}${top mem 4}
+${top name 5}${GOTO 250}${top pid 5}${GOTO 330}${top cpu 5}${GOTO 410}${top mem 5}
+${top name 6}${GOTO 250}${top pid 6}${GOTO 330}${top cpu 6}${GOTO 410}${top mem 6}
+${top name 7}${GOTO 250}${top pid 7}${GOTO 330}${top cpu 7}${GOTO 410}${top mem 7}
+${top name 8}${GOTO 250}${top pid 8}${GOTO 330}${top cpu 8}${GOTO 410}${top mem 8}
+${top name 9}${GOTO 250}${top pid 9}${GOTO 330}${top cpu 9}${GOTO 410}${top mem 9}
+${top name 10}${GOTO 250}${top pid 10}${GOTO 330}${top cpu 10}${GOTO 410}${top mem 10}
+]];

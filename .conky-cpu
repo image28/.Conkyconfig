@@ -1,0 +1,100 @@
+conky.config = {
+-- conky configuration
+-- edited by darcon@gmail.com
+-- edited by image28@slingshot.co.nz
+
+-- Use Xft?
+	use_xft = false,
+
+-- Xft font when Xft is enabled
+	font = 'Terminus:size=8',
+
+-- Text alpha when using Xft
+	xftalpha = 0.8,
+
+-- Create own window instead of using desktop (required in nautilus)
+	own_window = true,
+	own_window_argb_visual = true,
+	own_window_transparent = true,
+	--own_window_argb_value = 82,
+	own_window_type = 'desktop',
+	own_window_class = 'override',
+
+-- Use double buffering (reduces flicker, may not work for everyone)
+	double_buffer = true,
+
+-- Draw shades?
+	draw_shades = true,
+
+-- Draw outlines?
+	draw_outline = false,
+
+-- Draw borders around text
+	draw_borders = false,
+
+-- Stippled borders?
+	stippled_borders = 8,
+
+-- border margins
+--	border_margin = '4',
+
+-- border width
+	border_width = 1,
+
+-- Default colors and also border colors
+	default_color = 'white',
+	default_shade_color = 'black',
+	default_outline_color = 'white',
+
+-- Subtract file system buffers from used memory?
+	no_buffers = true,
+
+-- set to yes if you want all text to be in uppercase
+	uppercase = true,
+
+-- Force UTF8? note that UTF8 support required XFT
+	override_utf8_locale = false,
+
+---------------------------------------------------------
+-- Unique per window bellow                            --
+---------------------------------------------------------
+-- Set Window Name
+	own_window_title = 'conky-cpu',
+
+-- Update interval in seconds
+	update_interval = 0.5,
+
+-- Minimum size of text area
+	minimum_width = 500, minimum_height = 5,
+
+-- Text alignment, other possible values are commented
+    alignment = 'top_left',
+--alignment = 'top_right',
+--alignment bottom_left
+--alignment bottom_right
+
+-- Gap between borders of screen and text
+	gap_x = 5,
+	gap_y = 150,
+
+};
+
+conky.text = [[
+${font spaceman:size=10}${color Orange}SYSTEM ${hr 4}$color
+$nodename $sysname 
+$kernel
+
+${color Orange}CPU ${hr 4}$color
+
+Total CPU: ${cpu cpu0}
+${color Orange}${cpubar}$color
+${cpugraph 000000 ffa500}
+Core 1: ${freq 1}${goto 170}MHz${goto 320}Temprature:${alignr}$color ${exec sensors|grep 'Core 0'|awk '{print $3}' | cut -c2-3}
+${cpu cpu1} ${color Orange}${cpubar cpu1}$color
+Core 2: ${freq 2}${goto 170}MHz${goto 320}Temprature:${alignr}$color ${exec sensors|grep 'Core 1'|awk '{print $3}' | cut -c2-3}
+${cpu cpu2} ${color Orange}${cpubar cpu2}$color
+Core 3: ${freq 3}${goto 170}MHz${goto 320}Temprature:${alignr}$color ${exec sensors|grep 'Core 2'|awk '{print $3}' | cut -c2-3}
+${cpu cpu3} ${color Orange}${cpubar cpu1}$color
+Core 4: ${freq 4}${goto 170}MHz${goto 320}Temprature:${alignr}$color ${exec sensors|grep 'Core 3'|awk '{print $3}' | cut -c2-3}
+${cpu cpu4} ${color Orange}${cpubar cpu4}$color
+]];

@@ -1,0 +1,93 @@
+conky.config = {
+-- conky configuration
+-- edited by darcon@gmail.com
+-- edited by image28@slingshot.co.nz
+
+-- Use Xft?
+	use_xft = false,
+
+-- Xft font when Xft is enabled
+	font = 'Terminus:size=12',
+
+-- Text alpha when using Xft
+	xftalpha = 0.8,
+
+-- Create own window instead of using desktop (required in nautilus)
+	own_window = true,
+	own_window_argb_visual = true,
+	own_window_transparent = true,
+	--own_window_argb_value = 82,
+	own_window_type = 'desktop',
+	own_window_class = 'override',
+
+-- Use double buffering (reduces flicker, may not work for everyone)
+	double_buffer = true,
+
+-- Draw shades?
+	draw_shades = false,
+
+-- Draw outlines?
+	draw_outline = false,
+
+-- Draw borders around text
+	draw_borders = false,
+
+-- Stippled borders?
+	stippled_borders = 8,
+
+-- border margins
+--	border_margin = '4',
+
+-- border width
+	border_width = 1,
+
+-- Default colors and also border colors
+	default_color = 'white',
+	default_shade_color = 'black',
+	default_outline_color = 'white',
+
+-- Subtract file system buffers from used memory?
+	no_buffers = true,
+
+-- set to yes if you want all text to be in uppercase
+	uppercase = true,
+
+-- Force UTF8? note that UTF8 support required XFT
+	override_utf8_locale = false,
+
+
+
+---------------------------------------------------------
+-- Unique per window bellow                            --
+---------------------------------------------------------
+
+-- Set Window Name
+	own_window_title = 'conky-ip',
+
+-- Minimum size of text area
+	minimum_width = 350, minimum_height = 150,
+
+--Maximum Width of Window
+	maximum_width = 800,
+
+-- Update interval in seconds
+	update_interval = 2.0,
+
+-- Text alignment, other possible values are commented
+--alignment top_left
+    alignment = 'bottom_right',
+--alignment bottom_left
+--alignment 'bottom_right',
+
+-- Gap between borders of screen and text
+	gap_x = 5,
+	gap_y = 10,
+};
+
+conky.text = [[
+${color orange}ESTABLISHED Connections ${hr 4}
+${color lightgrey}Inbound: ${color white}${tcp_portmon 1 32767 count}    ${color lightgrey}Outbound: ${color white}${tcp_portmon 32768 61000 count}${alignr}${color lightgrey}Total: ${color white}${tcp_portmon 1 65535 count}
+
+${color slate grey}Process    ${color slate grey}Remote IP       ${color slate grey}L-Port ${alignr}${color slate grey}R-Port${color lightgrey}
+${texeci 3 netstat -anp | grep 'ESTABLISHED' | grep -v "udp" |sed -r 's|.*192.[0-9.]+:([0-9]*)\s*([0-9.]+):([0-9]+)[^/]+/([a-zA-Z0-9]*)|\4 \2 \1 \3|' | awk '{printf("%-10s %-11s %6s %8s\n",$1,$2,$3,$4)}' | grep -v "127.0.0.1" }
+]];

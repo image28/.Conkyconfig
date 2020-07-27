@@ -1,0 +1,91 @@
+conky.config = {
+-- conky configuration
+-- edited by darcon@gmail.com
+-- edited by image28@slingshot.co.nz
+
+-- Use Xft?
+	use_xft = false,
+
+-- Xft font when Xft is enabled
+	font = 'Terminus:size=12',
+
+-- Text alpha when using Xft
+	xftalpha = 0.8,
+
+-- Create own window instead of using desktop (required in nautilus)
+	own_window = true,
+	own_window_argb_visual = true,
+	own_window_transparent = true,
+	--own_window_argb_value = 82,
+	own_window_type = 'desktop',
+	own_window_class = 'override',
+
+-- Use double buffering (reduces flicker, may not work for everyone)
+	double_buffer = true,
+
+-- Draw shades?
+	draw_shades = false,
+
+-- Draw outlines?
+	draw_outline = false,
+
+-- Draw borders around text
+	draw_borders = false,
+
+-- Stippled borders?
+	stippled_borders = 8,
+
+-- border margins
+--	border_margin = '4',
+
+-- border width
+	border_width = 1,
+
+-- Default colors and also border colors
+	default_color = 'white',
+	default_shade_color = 'black',
+	default_outline_color = 'white',
+
+-- Subtract file system buffers from used memory?
+	no_buffers = true,
+
+-- set to yes if you want all text to be in uppercase
+	uppercase = true,
+
+-- Force UTF8? note that UTF8 support required XFT
+	override_utf8_locale = false,
+
+---------------------------------------------------------
+-- Unique per window bellow                            --
+---------------------------------------------------------
+
+-- Set Window Name
+	own_window_title = 'conky-net-usage',
+
+-- Minimum size of text area
+	minimum_width = 350, minimum_height = 5,
+
+--Maximum Width of Window
+	maximum_width = 800,
+	
+-- Update interval in seconds
+	update_interval = 2.0,
+	
+-- Text alignment, other possible values are commented
+--alignment top_left,
+--	alignment = 'top_right',
+alignment = 'bottom_left',
+--alignment bottom_right
+
+-- Gap between borders of screen and text
+	gap_x = 370,
+	gap_y = 110,
+};
+
+conky.text = [[
+${font spaceman:size=12}${color Orange}ETH ${addr enp5s0} ${hr 4}$color
+${color lightgrey}DWN:${color} ${downspeed enp5s0} ${alignr}${color lightgrey}Up:${color} ${upspeed enp5s0}
+${downspeedgraph enp5s0 25,140 000000 ffa500} ${alignr}${upspeedgraph enp5s0 25,140 000000 ffa500}$color
+${color Orange}Total: ${hr 4}${color} 
+${totaldown enp5s0}${alignr}${totalup enp5s0}
+]];
